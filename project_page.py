@@ -231,7 +231,7 @@ class Project_Page:
         time.sleep(3)
         
         self.driver.find_element(By.XPATH, '/html/body/div/div[1]/div[3]/div[2]/div/div/div[2]/div[2]/div[2]/div/div[1]/div[2]/div[2]/div/div[2]/div/div[1]/div[2]/div/div').click()
-        height_btn = self.wait.until(EC.presence_of_element_located((By.XPATH, '//div[contains(text(), "키")]')))
+        height_btn = self.wait.until(EC.presence_of_element_located((By.XPATH, '//div[contains(text(), "TIME")]')))
         height_btn.click()
         time.sleep(2)
         
@@ -239,13 +239,13 @@ class Project_Page:
         var_confirm_btn.click()
         time.sleep(3)
         
-        #FACTOR
+        # INDEPENDENT VARIABLE
         factor = self.driver.find_element(By.XPATH, '/html/body/div/div[1]/div[3]/div[2]/div/div/div[2]/div[2]/div[2]/div/div[2]/div[2]/div')
         factor.click()
         time.sleep(2)
         
         self.driver.find_element(By.XPATH, '/html/body/div/div[1]/div[3]/div[2]/div/div/div[2]/div[2]/div[2]/div/div[2]/div[2]/div[2]/div/div[2]/div/div[1]/div[2]/div/div').click()
-        gender_btn = self.wait.until(EC.presence_of_element_located((By.XPATH, '//div[contains(text(), "성별")]')))
+        gender_btn = self.wait.until(EC.presence_of_element_located((By.XPATH, '//div[contains(text(), "SEER_GRP")]')))
         gender_btn.click()
         time.sleep(3)
         
@@ -362,8 +362,14 @@ class Project_Page:
         time_col.click()
         time.sleep(2)
         
+        ## 데이터 에셋 선택
+        #da_select = self.driver.find_element(By.XPATH, f'//div[contains(text(),"{da_name}")]')
+        #da_select.click()
+        #time.sleep(2)    
+        
+        # TIME 컬럼 선택
         self.driver.find_element(By.XPATH, 
-                                 '/html/body/div/div[1]/div[3]/div[2]/div/div/div[2]/div[2]/div[2]/div/div[2]/div[2]/div[1]/div[2]/div[2]/div/div[2]/div/div[1]/div[2]/div/div').click()    
+                                 '/html/body/div/div[1]/div[3]/div[2]/div/div/div[2]/div[2]/div[2]/div/div[2]/div[2]/div[1]/div[2]/div[2]/div/div[2]/div/div[1]/div[2]/div/div/div/div').click()   
         time_elem = self.wait.until(EC.presence_of_element_located((By.XPATH, '//div[contains(text(), "TIME")]')))
         time_elem.click()
         time.sleep(2)    
@@ -372,19 +378,19 @@ class Project_Page:
         time_elem_ok_btn.click()
         time.sleep(2)
         
-        # 코호트 컬럼 - STATIN
-        cohort_col = self.driver.find_element(By.XPATH, '/html/body/div/div[1]/div[3]/div[2]/div/div/div[2]/div[2]/div[2]/div/div[2]/div[2]/div[2]/div[2]/div')
-        cohort_col.click()
+        # GROUP 컬럼 - STATIN
+        group_col = self.driver.find_element(By.XPATH, '/html/body/div/div[1]/div[3]/div[2]/div/div/div[2]/div[2]/div[2]/div/div[2]/div[2]/div[2]/div[2]/div')
+        group_col.click()
         time.sleep(2)
         
         self.driver.find_element(By.XPATH, 
-                                 '/html/body/div/div[1]/div[3]/div[2]/div/div/div[2]/div[2]/div[2]/div/div[2]/div[2]/div[2]/div[2]/div[2]/div/div[2]/div/div[1]/div[2]/div/div').click()    
-        cohort_elem = self.wait.until(EC.presence_of_element_located((By.XPATH, '//div[contains(text(), "STATIN")]')))
-        cohort_elem.click()
+                                 '/html/body/div/div[1]/div[3]/div[2]/div/div/div[2]/div[2]/div[2]/div/div[2]/div[2]/div[2]/div[2]/div[2]/div/div[2]/div/div[1]/div[2]/div/div/div/div').click()    
+        group_elem = self.wait.until(EC.presence_of_element_located((By.XPATH, '//div[contains(text(), "STATIN")]')))
+        group_elem.click()
         time.sleep(3)    
             
-        cohort_elem_ok_btn = self.driver.find_element(By.XPATH, '/html/body/div/div[1]/div[3]/div[2]/div/div/div[2]/div[2]/div[2]/div/div[2]/div[2]/div[2]/div[2]/div[2]/div/div[3]/div/div[2]/button')
-        cohort_elem_ok_btn.click()
+        group_elem_ok_btn = self.driver.find_element(By.XPATH, '/html/body/div/div[1]/div[3]/div[2]/div/div/div[2]/div[2]/div[2]/div/div[2]/div[2]/div[2]/div[2]/div[2]/div/div[3]/div/div[2]/button')
+        group_elem_ok_btn.click()
         time.sleep(2)
             
         
@@ -406,8 +412,9 @@ class Project_Page:
         event_ok_btn = self.driver.find_element(By.XPATH, '/html/body/div/div[1]/div[3]/div[2]/div/div/div[2]/div[2]/div[2]/div/div[2]/div[2]/div[3]/div[2]/div[2]/div/div[3]/div/div[2]/button')
         event_ok_btn.click()
         time.sleep(2)
-            
-    
+         
+   
+    # COX 설정
     def set_cox(self, da_name):
         self.switch_tab()
         time.sleep(2)
@@ -526,4 +533,192 @@ class Project_Page:
 
    
         
+    # Describtive Statistics
+    def describe(self, da_name):
+        self.switch_tab()
+        time.sleep(2)
+        
+        # 드롭다운 선택
+        dropdown = self.wait.until(EC.presence_of_element_located((By.XPATH, '/html/body/div/div[1]/div[3]/div[2]/div/div/div[2]/div[2]/div[1]/div[2]/div[3]/div[2]/div')))
+        dropdown.click()
+        time.sleep(2)
+        
+        # Descriptive Statistics 선택
+        kpe = self.driver.find_element(By.XPATH, '//div[contains(text(), "Descriptive Statistics")]')
+        kpe.click()
+        time.sleep(2)
+        
+        # from 절
+        from_btn = self.driver.find_element(By.XPATH, '/html/body/div/div[1]/div[3]/div[2]/div/div/div[2]/div[2]/div[2]/div/div[1]/div[2]/div[1]/div[2]/div')
+        from_btn.click()
+        time.sleep(2)
+        
+        provider1_btn = self.driver.find_element(By.XPATH, '//div[contains(text(),"provider1")]')
+        provider1_btn.click()
+        time.sleep(2)
+        
+        # 데이터 에셋 선택
+        da_select = self.driver.find_element(By.XPATH, f'//div[contains(text(),"{da_name}")]')
+        da_select.click()
+        time.sleep(2)
+        
+        da_ok_btn = self.driver.find_element(By.XPATH, '/html/body/div/div[1]/div[3]/div[2]/div/div/div[2]/div[2]/div[2]/div/div[1]/div[2]/div/div[2]/div[2]/div/div[3]/div/div[2]/button')
+        da_ok_btn.click()
+        time.sleep(2)
 
+        #STRATA 컬럼
+        strata_btn = self.driver.find_element(By.XPATH, '/html/body/div/div[1]/div[3]/div[2]/div/div/div[2]/div[2]/div[2]/div/div[2]/div[2]/div[1]/div[2]/div')
+        strata_btn.click()
+        time.sleep(2)
+        
+        self.driver.find_element(By.XPATH, 
+                                 '/html/body/div/div[1]/div[3]/div[2]/div/div/div[2]/div[2]/div[2]/div/div[2]/div[2]/div[1]/div[2]/div[2]/div/div[2]/div/div[1]/div[2]/div/div').click()
+        strata_elem = self.wait.until(EC.presence_of_element_located((By.XPATH, '//div[contains(text(), "DTH")]')))
+        strata_elem.click()
+        time.sleep(2)  
+        
+        strata_elem_ok_btn = self.driver.find_element(By.XPATH, '/html/body/div/div[1]/div[3]/div[2]/div/div/div[2]/div[2]/div[2]/div/div[2]/div[2]/div[1]/div[2]/div[2]/div/div[3]/div/div[2]/button')
+        strata_elem_ok_btn.click()
+        time.sleep(1)
+        
+        #COLUMN 컬럼
+        column_btn = self.driver.find_element(By.XPATH, '/html/body/div/div[1]/div[3]/div[2]/div/div/div[2]/div[2]/div[2]/div/div[2]/div[2]/div[2]/div[2]/div')
+        column_btn.click()
+        time.sleep(2)
+        
+        self.driver.find_element(By.XPATH, '/html/body/div/div[1]/div[3]/div[2]/div/div/div[2]/div[2]/div[2]/div/div[2]/div[2]/div[2]/div[2]/div[2]/div/div[2]/div/div[1]/div[2]/div/div').click()
+        column_elem = self.wait.until(EC.presence_of_element_located((By.XPATH, '//div[contains(text(), "G1E_BP_SYS")]')))
+        column_elem.click()
+        
+        ok_btn = self.driver.find_element(By.XPATH, '/html/body/div/div[1]/div[3]/div[2]/div/div/div[2]/div[2]/div[2]/div/div[2]/div[2]/div[2]/div[2]/div[2]/div/div[3]/div/div[2]/button')
+        ok_btn.click()
+        
+    
+    # Logistic Regression
+    def set_logit(self, da_name):
+        self.switch_tab()
+        time.sleep(2)
+        
+        # 드롭다운 선택
+        dropdown = self.wait.until(EC.presence_of_element_located((By.XPATH, '/html/body/div/div[1]/div[3]/div[2]/div/div/div[2]/div[2]/div[1]/div[2]/div[3]/div[2]/div')))
+        dropdown.click()
+        
+        # 로지스틱 회귀 선택
+        logist = self.driver.find_element(By.XPATH, '//div[contains(text(), "Logistic Regression")]')
+        logist.click()
+        
+        # from절
+        from_btn = self.driver.find_element(By.XPATH, '/html/body/div/div[1]/div[3]/div[2]/div/div/div[2]/div[2]/div[2]/div/div[3]/div[2]/div')
+        from_btn.click()
+        time.sleep(2)
+        
+        provider1_btn = self.driver.find_element(By.XPATH, '//div[contains(text(),"provider1")]')
+        provider1_btn.click()
+        time.sleep(2)
+        
+        # 데이터 에셋 선택
+        da_select = self.driver.find_element(By.XPATH, f'//div[contains(text(),"{da_name}")]')
+        da_select.click()
+        time.sleep(3)
+        
+        ok_btn = self.driver.find_element(By.XPATH, '/html/body/div/div[1]/div[3]/div[2]/div/div/div[2]/div[2]/div[2]/div/div[3]/div[2]/div[2]/div/div[3]/div/div[2]/button')
+        ok_btn.click()
+        time.sleep(3)
+                                                     
+        # 종속변수
+        dependent = self.driver.find_element(By.XPATH, '/html/body/div/div[1]/div[3]/div[2]/div/div/div[2]/div[2]/div[2]/div/div[1]/div[2]/div')
+        dependent.click()
+        time.sleep(2)
+        
+        self.driver.find_element(By.XPATH, '/html/body/div/div[1]/div[3]/div[2]/div/div/div[2]/div[2]/div[2]/div/div[1]/div[2]/div[2]/div/div[2]/div/div[1]/div[2]/div/div').click()
+        dth_btn = self.wait.until(EC.presence_of_element_located((By.XPATH, '//div[contains(text(), "DTH")]')))
+        dth_btn.click()
+        time.sleep(3)
+        
+        dependent_ok_btn = self.driver.find_element(By.XPATH, '/html/body/div/div[1]/div[3]/div[2]/div/div/div[2]/div[2]/div[2]/div/div[1]/div[2]/div[2]/div/div[3]/div/div[2]/button')
+        dependent_ok_btn.click()
+        time.sleep(3)
+        
+        # 독립변수
+        independent = self.driver.find_element(By.XPATH, '/html/body/div/div[1]/div[3]/div[2]/div/div/div[2]/div[2]/div[2]/div/div[2]/div[2]/div')
+        independent.click()
+        time.sleep(2)
+        
+        self.driver.find_element(By.XPATH, '/html/body/div/div[1]/div[3]/div[2]/div/div/div[2]/div[2]/div[2]/div/div[2]/div[2]/div[2]/div/div[2]/div/div[1]/div[2]/div/div').click()
+        age_btn02 = self.wait.until(EC.presence_of_element_located((By.XPATH, '//div[contains(text(), "AGE")]')))
+        age_btn02.click()
+        time.sleep(2)
+        
+        independent_ok_btn = self.driver.find_element(By.XPATH, '/html/body/div/div[1]/div[3]/div[2]/div/div/div[2]/div[2]/div[2]/div/div[2]/div[2]/div[2]/div/div[3]/div/div[2]/button')
+        independent_ok_btn.click()
+        time.sleep(2)
+        
+        
+    # Paired t-Test
+    def set_ttest(self, da_name):
+        self.switch_tab()
+        time.sleep(2)
+        
+        # 드롭다운 선택
+        dropdown = self.wait.until(EC.presence_of_element_located((By.XPATH, '/html/body/div/div[1]/div[3]/div[2]/div/div/div[2]/div[2]/div[1]/div[2]/div[3]/div[2]/div')))
+        dropdown.click()
+        
+        # T검정 선택
+        linear = self.driver.find_element(By.XPATH, '//div[contains(text(), "Paired t-Test")]')
+        linear.click()
+        
+        # from절
+        from_btn = self.driver.find_element(By.XPATH, '/html/body/div/div[1]/div[3]/div[2]/div/div/div[2]/div[2]/div[2]/div/div[2]/div[2]/div')
+        from_btn.click()
+        time.sleep(2)
+        
+        provider1_btn = self.driver.find_element(By.XPATH, '//div[contains(text(),"provider1")]')
+        provider1_btn.click()
+        
+        # 데이터 에셋 선택
+        da_select = self.driver.find_element(By.XPATH, f'//div[contains(text(),"{da_name}")]')
+        da_select.click()
+        time.sleep(3)
+        
+        ok_btn = self.driver.find_element(By.XPATH, '/html/body/div/div[1]/div[3]/div[2]/div/div/div[2]/div[2]/div[2]/div/div[2]/div[2]/div[2]/div/div[3]/div/div[2]/button')
+        ok_btn.click()
+        time.sleep(2)
+        
+        # Variable 항목 선택
+        var_btn = self.driver.find_element(By.XPATH, '/html/body/div/div[1]/div[3]/div[2]/div/div/div[2]/div[2]/div[2]/div/div[1]/div[2]/div')
+        var_btn.click()
+        time.sleep(2)
+        
+        self.driver.find_element(By.XPATH, '/html/body/div/div[1]/div[3]/div[2]/div/div/div[2]/div[2]/div[2]/div/div[1]/div[2]/div[2]/div/div[2]/div[1]/div/div[2]/div[1]/div').click()
+        age_btn03 = self.wait.until(EC.presence_of_element_located((By.XPATH, '//div[contains(text(), "AGE")]')))
+        age_btn03.click()
+        time.sleep(2)
+        
+        self.driver.find_element(By.XPATH, '/html/body/div/div[1]/div[3]/div[2]/div/div/div[2]/div[2]/div[2]/div/div[1]/div[2]/div[2]/div/div[2]/div[2]/div/div[2]/div[1]/div').click()
+        container_div = self.driver.find_element(By.XPATH, '/html/body/div/div[1]/div[3]/div[2]/div/div/div[2]/div[2]/div[2]/div/div[1]/div[2]/div[2]/div/div[2]/div[2]/div/div[2]/div[2]')
+        
+        max_scrolls = 20 # 스크롤 횟수 제한
+        center_scroll = True 
+        target = None # 찾은 요소를 루프 밖에서도 쓰기 위해 보관
+        rel_xpath = '//div[contains(normalize-space(.), "CHOL")]'
+        
+        for a in range(max_scrolls):
+            matches = container_div.find_elements(By.XPATH, rel_xpath)
+            if matches:
+                target = matches[0]
+                self.driver.execute_script("arguments[0].scrollIntoView({block:'center'});", target)
+                break
+            if not target:
+                raise Exception("'CHOL'를 포함한 div를 찾지 못했습니다.")
+        
+        try:
+            target.click()
+        except Exception:
+            self.driver.execute_script("arguments[0].click();", target)
+        time.sleep(3)
+        
+        var_ok_btn = self.driver.find_element(By.XPATH, '/html/body/div/div[1]/div[3]/div[2]/div/div/div[2]/div[2]/div[2]/div/div[1]/div[2]/div[2]/div/div[3]/div[2]/div[2]/button')
+        var_ok_btn.click()
+        
+        
+        

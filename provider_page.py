@@ -111,7 +111,7 @@ class Provider_Page:
         upload_area = self.driver.find_element(By.CSS_SELECTOR, '#root > div.Layout_Container__Nzz07 > div.Layout_HeaderContentContainer__LMWZ7 > div.Layout_ContentContainer__FdIQP.Layout_Scrollable__Ti0QR > div > div > div.DataAssetUploadDragAndDrop_Container__ER86Q > div:nth-child(2) > input[type=file]')
         self.driver.execute_script("arguments[0].style.display = 'block';", upload_area)
         
-        file_path = r'/home/ywj/venv-auto/dcr_e2e/main4.csv'
+        file_path = r'/home/ywj/venv-auto/dcr_e2e/MAIN.csv'
         
         upload_area.send_keys(file_path)
     
@@ -130,7 +130,28 @@ class Provider_Page:
         register_btn = self.wait.until(EC.presence_of_element_located((By.XPATH, '/html/body/div/div[1]/div[3]/div[1]/div[3]/div[2]/div/button')))
         register_btn.click()
         time.sleep(3)
+    
+    
+    # MAIN 파일 등록
+    def register_main(self):
+        self.switch_tab()
+        time.sleep(2)
         
+        # 다음 버튼 클릭
+        next_btn = self.driver.find_element(By.XPATH, '/html/body/div/div[1]/div[3]/div[1]/div[3]/div/div/button')
+        next_btn.click()
+        time.sleep(2)
+        
+        # TIME 컬럼 데이터형식 int로 변경 
+        time_row = self.driver.find_element(By.XPATH, '//div[contains(text(), "TIME")]')
+        time_row.click()
+        time.sleep(2)
+        
+        int_option = time_row.find_element(By.XPATH, ' .//label[normalize-space(.)="int"] | .//button[normalize-space(.)="int"]')
+        int_option.click()
+        time.sleep(2)
+
+
         
     # 승인 확인 진입
     def enter_query_approval(self, da_name):

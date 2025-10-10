@@ -115,7 +115,7 @@ def oncall_01(driver, wait, project):
     
     result_xpath = '/html/body/div[1]/div[1]/div[3]/div[3]/div/div/div[4]/div[2]/div/table/tbody/tr/td/div'
     log_message('info', 'On-call #01 START')
-    query_01 = 'SELECT COUNT(*) \nFROM provider1.main4'
+    query_01 = 'SELECT COUNT(*) \nFROM provider1.MAIN'
     proj_name = 'YWJ'
 
     # Asker
@@ -139,8 +139,9 @@ def oncall_01(driver, wait, project):
         create_wf = wait.until(EC.presence_of_element_located((By.XPATH, '/html/body/div[1]/div[1]/div[3]/div[1]/div[3]/div[2]/div/button')))
         create_wf.click()
         time.sleep(3)
+        
         # 워크플로우 이름 입력
-        wf_name = driver.find_element(By.XPATH, '/html/body/div/div[1]/div[3]/div[2]/div/div/div[1]/div[2]/div[1]/div[2]/div/input')
+        wf_name = driver.find_element(By.XPATH, '/html/body/div/div[1]/div[3]/div[2]/div/div/div[2]/div[1]/div[2]/div[1]/div[2]/div/input')
         wf_name.click()
         wf_name.send_keys(f'workflow_{today_date}_{scene_num}')
         time.sleep(2)

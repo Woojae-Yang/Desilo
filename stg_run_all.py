@@ -232,8 +232,8 @@ def scene_03(driver, wait, provider, admin, project):
         time.sleep(2)
         provider.move_to_data_registration()
         provider.data_registration(da_name_03, today_date)
-        provider.upload_file_main4()
-        provider.register_main()
+        provider.upload_file()
+        provider.register()
 
     finally:
         log_message('info', 'DCR_scenario_#3 - Data-registry Done ===========================================')
@@ -641,7 +641,7 @@ def scene_08(driver, wait, provider, admin, project):
     time.sleep(1)
 
 
-#%%  ########################## SCENARIO #09 ########################## Kaplan Meier 
+#%%  ########################## SCENARIO #09 ##########################
 
 def scene_09(driver, wait, provider, admin, project):
     time.sleep(2)
@@ -661,7 +661,7 @@ def scene_09(driver, wait, provider, admin, project):
         provider.move_to_data_registration()
         provider.data_registration(da_name_09, today_date)
         provider.upload_file_main4()
-        provider.register_main()
+        provider.register()
 
     finally:
         log_message('info', 'DCR_scenario_#9 - Data-registry Done ===========================================')
@@ -725,7 +725,7 @@ def scene_10(driver, wait, provider, admin, project):
         provider.move_to_data_registration()
         provider.data_registration(da_name_10, today_date)
         provider.upload_file_main4()
-        provider.register_main()
+        provider.register()
 
     finally:
         log_message('info', 'DCR_scenario_#10 - Data-registry Done ===========================================')
@@ -789,7 +789,7 @@ def scene_11(driver, wait, provider, admin, project):
         provider.move_to_data_registration()
         provider.data_registration(da_name_11, today_date)
         provider.upload_file_main4()
-        provider.register_main()
+        provider.register()
         
         time.sleep(2)
         
@@ -898,7 +898,7 @@ def scene_12(driver, wait, provider, admin, project):
         provider.move_to_data_registration()
         provider.data_registration(da_name_12, today_date)
         provider.upload_file_main4()
-        provider.register_main()
+        provider.register()
         
     finally:
         log_message('info', 'DCR_scenario_#12 - Data-registry Done ===========================================')
@@ -956,7 +956,7 @@ def scene_13(driver, wait, provider, admin, project):
         provider.move_to_data_registration()
         provider.data_registration(da_name_13, today_date)
         provider.upload_file_main4()
-        provider.register_main()
+        provider.register()
         
     finally:
         log_message('info', 'DCR_scenario_#13 - Data-registry Done ===========================================')
@@ -1014,7 +1014,7 @@ def scene_14(driver, wait, provider, admin, project):
         provider.move_to_data_registration()
         provider.data_registration(da_name_14, today_date)
         provider.upload_file_main4()
-        provider.register_main()
+        provider.register()
         
     finally:
         log_message('info', 'DCR_scenario_#14 - Data-registry Done ===========================================')

@@ -38,7 +38,7 @@ def create_driver():
     options.add_argument("enable-automation")
     options.add_argument("--disable-infobars")
     options.add_argument("--disable-dev-shm-usage")
-
+    ##### 
 
     # 크롬드라이버 자동 업데이트
     service = Service(executable_path=ChromeDriverManager().install())
